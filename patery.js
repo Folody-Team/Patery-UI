@@ -35,16 +35,19 @@
     main()
   )))));function main() {
     (async () => {
-      const P = document.querySelector("PateryPadding");
-      const D = document.createElement("div");
-      const A = P.attributes;
-      for (let i = 0; i < A.length; i++) {
-        D.setAttribute(A[i].name, A[i].value);
+      // if document PateryPadding element tag
+      if(document.querySelector("PateryPadding")) {
+        const P = document.querySelector("PateryPadding");
+        const D = document.createElement("div");
+        const A = P.attributes;
+        for (let i = 0; i < A.length; i++) {
+          D.setAttribute(A[i].name, A[i].value);
+        }
+        while (P.firstChild) {
+          D.appendChild(P.firstChild);
+        }
+        P.parentNode.replaceChild(D, P);
       }
-      while (P.firstChild) {
-        D.appendChild(P.firstChild);
-      }
-      P.parentNode.replaceChild(D, P);
     })();
     (async () => {
       if (document.body.innerHTML.includes("403 Forbidden")) return;
