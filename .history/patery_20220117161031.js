@@ -38,19 +38,17 @@ eval(eval(eval(eval(eval(eval(
       )))));function main() {
         (async () => {
           // if document PateryPadding element tag
-          if(document.querySelector("PateryPadding") || document.querySelectorAll("PateryPadding")) {
-            document.querySelectorAll("PateryPadding").forEach(P => {
-              const D = document.createElement("div");
-              const A = P.attributes;
-              for (let i = 0; i < A.length; i++) {
-                D.setAttribute(A[i].name, A[i].value);
-              }
-              while (P.firstChild) {
-                D.appendChild(P.firstChild);
-              }
-              P.parentNode.replaceChild(D, P);
-            })  
-            
+          if(document.querySelector("PateryPadding")) {
+            const P = document.querySelector("PateryPadding");
+            const D = document.createElement("div");
+            const A = P.attributes;
+            for (let i = 0; i < A.length; i++) {
+              D.setAttribute(A[i].name, A[i].value);
+            }
+            while (P.firstChild) {
+              D.appendChild(P.firstChild);
+            }
+            P.parentNode.replaceChild(D, P);
           }
         })();
         (async () => {
@@ -152,53 +150,54 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.5/patery-ui.css";
-          document.head.appendChild(css);
-        })();
-        (() => {
-          if(document.querySelector("PateryButton") || document.querySelectorAll("PateryButton")) {
-              document.querySelectorAll("PateryButton").forEach(function (e) {
-                const B = document.createElement("button");
-                const A = e.attributes;
-                B.className += e.tagName.toLowerCase();
-                for (let i = 0; i < A.length; i++) {
-                  B.setAttribute(A[i].name, A[i].value);
-                }
-                while (e.firstChild) {
-                  B.appendChild(e.firstChild);
-                }
-                e.parentNode.replaceChild(B, e);
-              });
-          }
-          
-        })();
-        (() => {
-          function createRipple(event) {
-            const B = event.currentTarget;
-            const C = document.createElement("span");
-            const D = Math.max(B.clientWidth, B.clientHeight);
-            const RA = D / 2;
-            C.style.width = C.style.height = `${D}px`;
-            C.style.left = `${event.clientX - B.offsetLeft - RA}px`;
-            C.style.top = `${event.clientY - B.offsetTop - RA}px`;
-            C.classList.add("ri-67");
-            const R = B.getElementsByClassName("ri-67")[0];
-            if (R) {
-              R.remove();
-            }
-            B.appendChild(C);
-          };
-          const BS = document.querySelectorAll(".paterybutton");
-          BS.forEach(button => {
-            button.addEventListener("click", createRipple);
-          });
-          
-        })();
       }
     })();
-    
+    (() => {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.type = "text/css";
+      css.href = "https://cdn.jsdelivr.net/npm/patery-ui/patery-ui.css";
+      document.head.appendChild(css);
+    })();
+    (() => {
+      if(document.querySelector("PateryButton")){
+        new Promise(() => {
+          const P = document.querySelectorAll("PateryButton");
+          const B = document.createElement("button");
+          // set class for B = tagName of P
+          B.className = P.tagName.toLowerCase();
+          const A = P.attributes;
+          for (let i = 0; i < A.length; i++) {
+            B.setAttribute(A[i].name, A[i].value);
+          }
+          while (P.firstChild) {
+            B.appendChild(P.firstChild);
+          }
+          P.parentNode.replaceChild(B, P);
+        })
+      }
+      
+    })();
+    (() => {
+      function createRipple(event) {
+        const B = event.currentTarget;
+        const C = document.createElement("span");
+        const D = Math.max(B.clientWidth, B.clientHeight);
+        const RA = D / 2;
+        C.style.width = C.style.height = `${D}px`;
+        C.style.left = `${event.clientX - B.offsetLeft - RA}px`;
+        C.style.top = `${event.clientY - B.offsetTop - RA}px`;
+        C.classList.add("ri-67");
+        const R = B.getElementsByClassName("ri-67")[0];
+        if (R) {
+          R.remove();
+        }
+        B.appendChild(C);
+      };
+      const BS = document.querySelectorAll(".paterybutton");
+      BS.forEach(button => {
+        button.addEventListener("click", createRipple);
+      });
+      
+    })();
 })()))))));

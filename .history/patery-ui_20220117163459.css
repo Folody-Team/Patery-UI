@@ -2,7 +2,11 @@
     A modern website theme framework and simplified elements. Patery UI was born to simplify and also bring a modern touch, making the website interface more professional. (Easy access for newbies to learn web programming)
 */
 *{
-    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: auto;
+    color: #1a1a1a;
 }
 :root{
     --gray: #1a1a1a;
@@ -41,14 +45,7 @@
 }
 button{
     border-style: none;
-    border-radius: 5px;
-    padding: 1rem 2rem;
-    background: #e2e2e2;
-    color: var(--gray-lightest);
-    transition: 0.4s;
-}
-button:hover{
-    background: #c2c2c2;
+    border-radius: 10px;
 }
 .paterybutton {
     position: relative;

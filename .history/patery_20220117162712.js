@@ -38,19 +38,17 @@ eval(eval(eval(eval(eval(eval(
       )))));function main() {
         (async () => {
           // if document PateryPadding element tag
-          if(document.querySelector("PateryPadding") || document.querySelectorAll("PateryPadding")) {
-            document.querySelectorAll("PateryPadding").forEach(P => {
-              const D = document.createElement("div");
-              const A = P.attributes;
-              for (let i = 0; i < A.length; i++) {
-                D.setAttribute(A[i].name, A[i].value);
-              }
-              while (P.firstChild) {
-                D.appendChild(P.firstChild);
-              }
-              P.parentNode.replaceChild(D, P);
-            })  
-            
+          if(document.querySelector("PateryPadding")) {
+            const P = document.querySelector("PateryPadding");
+            const D = document.createElement("div");
+            const A = P.attributes;
+            for (let i = 0; i < A.length; i++) {
+              D.setAttribute(A[i].name, A[i].value);
+            }
+            while (P.firstChild) {
+              D.appendChild(P.firstChild);
+            }
+            P.parentNode.replaceChild(D, P);
           }
         })();
         (async () => {
@@ -156,7 +154,7 @@ eval(eval(eval(eval(eval(eval(
           const css = document.createElement("link");
           css.rel = "stylesheet";
           css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.5/patery-ui.css";
+          css.href = "https://cdn.jsdelivr.net/npm/patery-ui/patery-ui.css";
           document.head.appendChild(css);
         })();
         (() => {

@@ -42,13 +42,9 @@
 button{
     border-style: none;
     border-radius: 5px;
-    padding: 1rem 2rem;
+    padding: 10px 15px;
     background: #e2e2e2;
-    color: var(--gray-lightest);
-    transition: 0.4s;
-}
-button:hover{
-    background: #c2c2c2;
+    color: var(--gray-lighter);
 }
 .paterybutton {
     position: relative;

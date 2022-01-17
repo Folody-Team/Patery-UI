@@ -44,7 +44,7 @@ button{
     border-radius: 5px;
     padding: 1rem 2rem;
     background: #e2e2e2;
-    color: var(--gray-lightest);
+    color: var(--gray-lighter);
     transition: 0.4s;
 }
 button:hover{
