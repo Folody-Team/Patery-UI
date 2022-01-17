@@ -43,12 +43,13 @@
     --transparent-light-light: rgba(255,255,255,0.2);
     --transparent-dark-dark: rgba(0,0,0,0.2);
 }
-.paterybutton {
+button {
     position: relative;
     overflow: hidden;
     transition: background 400ms;
     background-color: var(--gray-moment);
     padding: 1rem 2rem;
+    font-family: 'Roboto', sans-serif;
     outline: 0;
     border: 0;
     border-radius: 0.25rem;

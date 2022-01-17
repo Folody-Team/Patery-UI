@@ -155,13 +155,6 @@ eval(eval(eval(eval(eval(eval(
     })();
     // load css file
     (() => {
-      const css = document.createElement("link");
-      css.rel = "stylesheet";
-      css.href = "https://raw.githubusercontent.com/Folody-Team/Patery-UI/main/patery-ui.css";
-      css.type = "text/css";
-      document.head.appendChild(css);
-    })();
-    (() => {
       if(document.querySelector("PateryButton")){
         new Promise(() => {
           const P = document.querySelector("PateryButton");
@@ -202,4 +195,5 @@ eval(eval(eval(eval(eval(eval(
       });
       
     })();
-})()))))));
+  })()
+))))));

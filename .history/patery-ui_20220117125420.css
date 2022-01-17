@@ -43,7 +43,7 @@
     --transparent-light-light: rgba(255,255,255,0.2);
     --transparent-dark-dark: rgba(0,0,0,0.2);
 }
-.paterybutton {
+.button {
     position: relative;
     overflow: hidden;
     transition: background 400ms;

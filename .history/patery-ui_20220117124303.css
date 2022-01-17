@@ -1,13 +1,6 @@
 /*
     A modern website theme framework and simplified elements. Patery UI was born to simplify and also bring a modern touch, making the website interface more professional. (Easy access for newbies to learn web programming)
 */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--white);
-    font-size: auto;
-}
 :root{
     --gray: #1a1a1a;
     --gray-light: #2f2f2f;
@@ -28,7 +21,7 @@
     --purple-moment: #ff00ff;
     --pink: #ff00ff;
     --pink-moment: #ff00ff;
-    --white: #d6d6d6;
+    --white: #ffffff;
     --black: #000000;
     --transparent: transparent;
     --transparent-moment: rgba(0,0,0,0.5);
@@ -36,37 +29,40 @@
     --transparent-dark: rgba(0,0,0,0.5);
     --transparent-lightest: rgba(255,255,255,0.1);
     --transparent-darkest: rgba(0,0,0,0.1);
-    --transparent-light-moment: rgba(255,255,255,0.2);
+    --transparent-light-moment: rgba(255,255,255,0.35);
     --transparent-dark-moment: rgba(0,0,0,0.5);
     --transparent-light-lightest: rgba(255,255,255,0.1);
     --transparent-dark-darkest: rgba(0,0,0,0.1);
     --transparent-light-light: rgba(255,255,255,0.2);
     --transparent-dark-dark: rgba(0,0,0,0.2);
 }
-.paterybutton {
+button {
     position: relative;
     overflow: hidden;
     transition: background 400ms;
+    color: #fff;
     background-color: var(--gray-moment);
     padding: 1rem 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
     outline: 0;
     border: 0;
     border-radius: 0.25rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* black with 30% opacity */
     cursor: pointer;
   }
-span.ri-67 {
+span.ripple {
     position: absolute;
     border-radius: 50%;
     transform: scale(0);
-    animation: ri-67 600ms linear;
-    background-color: var(--transparent-light-moment);
-}
+    animation: ripple 600ms linear;
+    background-color: var(--transparent-lightest);
+  }
   
-@keyframes ri-67 {
+  @keyframes ripple {
     to {
       transform: scale(4);
       opacity: 0;
     }
-}
+  }
   

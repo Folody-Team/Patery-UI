@@ -1,13 +1,6 @@
 /*
     A modern website theme framework and simplified elements. Patery UI was born to simplify and also bring a modern touch, making the website interface more professional. (Easy access for newbies to learn web programming)
 */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--white);
-    font-size: auto;
-}
 :root{
     --gray: #1a1a1a;
     --gray-light: #2f2f2f;
@@ -28,7 +21,7 @@
     --purple-moment: #ff00ff;
     --pink: #ff00ff;
     --pink-moment: #ff00ff;
-    --white: #d6d6d6;
+    --white: #ffffff;
     --black: #000000;
     --transparent: transparent;
     --transparent-moment: rgba(0,0,0,0.5);
@@ -36,37 +29,73 @@
     --transparent-dark: rgba(0,0,0,0.5);
     --transparent-lightest: rgba(255,255,255,0.1);
     --transparent-darkest: rgba(0,0,0,0.1);
-    --transparent-light-moment: rgba(255,255,255,0.2);
+    --transparent-light-moment: rgba(255,255,255,0.5);
     --transparent-dark-moment: rgba(0,0,0,0.5);
     --transparent-light-lightest: rgba(255,255,255,0.1);
     --transparent-dark-darkest: rgba(0,0,0,0.1);
     --transparent-light-light: rgba(255,255,255,0.2);
     --transparent-dark-dark: rgba(0,0,0,0.2);
 }
-.paterybutton {
+button{
     position: relative;
-    overflow: hidden;
-    transition: background 400ms;
     background-color: var(--gray-moment);
-    padding: 1rem 2rem;
-    outline: 0;
-    border: 0;
-    border-radius: 0.25rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* black with 30% opacity */
+    border-style: none;
+    border-radius: 4em;
+    font-size: 16px;
+    color: white;
+    padding: 0.8em 1.8em;
+    cursor:pointer;
+    user-select:none;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
-  }
-span.ri-67 {
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s; /* Safari */
+}
+button:hover {
+    transition-duration: 0.1s;
+    background-color: var(--gray-lighter);
+}
+  
+button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.24);
+}
+  
+button:active:after {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.301);
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    opacity: 1;
+    transition: 0s;
+}
+  
+button:active {
+    top: 1px;
+}
+span.ripple {
     position: absolute;
     border-radius: 50%;
     transform: scale(0);
-    animation: ri-67 600ms linear;
-    background-color: var(--transparent-light-moment);
-}
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
   
-@keyframes ri-67 {
+  @keyframes ripple {
     to {
       transform: scale(4);
       opacity: 0;
     }
-}
+  }
   
