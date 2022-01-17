@@ -123,7 +123,8 @@ eval(eval(eval(eval(eval(eval(
                 });
               } catch (error) {
                 new Promise(function (resolve, reject) {
-                  reject(new Error("PateryError: " + error));
+                  const err = new Error("PateryError: " + error);
+                  reject(err);
                 }).then(function (err) {
                   console.error(err);
                 });
@@ -141,8 +142,8 @@ eval(eval(eval(eval(eval(eval(
                 });
               } catch (error) {
                 new Promise(function (resolve, reject) {
-                  reject(new Error("PateryError: " + error));
-
+                  const err = new Error("PateryError: " + error);
+                  reject(err);
                 }).then(function (err) {
                   console.error(err);
                 });
@@ -154,10 +155,8 @@ eval(eval(eval(eval(eval(eval(
     })();
     (() => {
       const css = document.createElement("link");
-      // pathname with hostname and protocol (https://example.com/pathname) and filename (patery.css)
-      css.setAttribute("href", window.location.href.replace(/\/[^\/]*$/, "/patery.css"));
       css.rel = "stylesheet";
-      css.href = "";
+      css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.1/patery-ui.css";
       css.type = "text/css";
       document.head.appendChild(css);
     })();
