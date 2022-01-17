@@ -1,0 +1,25 @@
+{
+  "name": "patery-ui",
+  "version": "1.0.0",
+  "description": "A modern website theme framework and simplified elements.",
+  "main": "patery.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Folody-Team/Patery-UI.git"
+  },
+  "keywords": [
+    "patery"
+  ],
+  "author": "Folody Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Folody-Team/Patery-UI/issues"
+  },
+  "homepage": "https://github.com/Folody-Team/Patery-UI#readme"
+}

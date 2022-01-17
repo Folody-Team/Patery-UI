@@ -157,7 +157,7 @@ eval(eval(eval(eval(eval(eval(
     (() => {
       const css = document.createElement("link");
       css.rel = "stylesheet";
-      css.href = "https://cdn.jsdelivr.net/gh/Folody-Team/Patery-UI@1.0.2/patery-ui.css";
+      css.href = "https://raw.githubusercontent.com/Folody-Team/Patery-UI/main/patery-ui.css";
       css.type = "text/css";
       document.head.appendChild(css);
     })();
