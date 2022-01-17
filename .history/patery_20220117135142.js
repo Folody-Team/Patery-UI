@@ -153,10 +153,11 @@ eval(eval(eval(eval(eval(eval(
         })();
       }
     })();
+    // load css file
     (() => {
       const css = document.createElement("link");
       css.rel = "stylesheet";
-      css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.1/patery-ui.css";
+      css.href = "/patery.css";
       css.type = "text/css";
       document.head.appendChild(css);
     })();
