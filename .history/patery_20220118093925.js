@@ -152,13 +152,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.7/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.6/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -179,17 +179,6 @@ eval(eval(eval(eval(eval(eval(
                   } ES.parentNode.replaceChild(M, ES);
                   const D = window.matchMedia("(prefers-color-scheme: dark)"),
                       L = window.matchMedia("(prefers-color-scheme: light)");
-                  // get color theme from local storage or browser settings if not set yet
-                  const theme = localStorage.getItem("theme");
-                  if (theme === null) {
-                    if (D.matches) {
-                      localStorage.setItem("theme", "dark");
-                    } else if (L.matches) {
-                      localStorage.setItem("theme", "light");
-                    } else {
-                      localStorage.setItem("theme", "dark");
-                    }
-                  }
                   // if is not dark or light mode then pick color from browser settings
                   if(!D.matches && !L.matches) {
                     if(window.matchMedia("(prefers-color-scheme: no-preference)").matches) {

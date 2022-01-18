@@ -152,13 +152,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.7/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.6/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {

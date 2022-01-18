@@ -152,13 +152,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.7/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.6/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -179,57 +179,33 @@ eval(eval(eval(eval(eval(eval(
                   } ES.parentNode.replaceChild(M, ES);
                   const D = window.matchMedia("(prefers-color-scheme: dark)"),
                       L = window.matchMedia("(prefers-color-scheme: light)");
-                  // get color theme from local storage or browser settings if not set yet
-                  const theme = localStorage.getItem("theme");
-                  if (theme === null) {
-                    if (D.matches) {
-                      localStorage.setItem("theme", "dark");
-                    } else if (L.matches) {
-                      localStorage.setItem("theme", "light");
-                    } else {
-                      localStorage.setItem("theme", "dark");
-                    }
-                  }
-                  // if is not dark or light mode then pick color from browser settings
-                  if(!D.matches && !L.matches) {
-                    if(window.matchMedia("(prefers-color-scheme: no-preference)").matches) {
-                      if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                        document.body.style.backgroundColor = "#1a1a1a";
-                        document.body.style.color = "#fff";
-                      } else {
-                        document.body.style.backgroundColor = "#fff";
-                        document.body.style.color = "#000";
+                  // set dark mode and light mode for all elements
+                  if (D.matches) {
+                    document.querySelectorAll("*").forEach(function (e) {
+                      if(document.querySelector("PateryButton")) {
+                        document.querySelectorAll("PateryButton").forEach(P => {
+                          P.style.backgroundColor = "var(--gray-moment)";
+                          P.style.color = "#fff";
+                        })
                       }
-                    }
-                  } else {
-                    // set dark mode and light mode for all elements
-                    if (D.matches) {
-                      document.querySelectorAll("*").forEach(function (e) {
-                        if(document.querySelector("PateryButton")) {
-                          document.querySelectorAll("PateryButton").forEach(P => {
-                            P.style.backgroundColor = "var(--gray-moment)";
-                            P.style.color = "#fff";
-                          })
-                        }
-                        e.style.backgroundColor = "var(--gray)";
-                        e.style.color = "#fff";
-                      });
-                    } if (L.matches) {
-                      document.querySelectorAll("*").forEach(function (e) {
-                        if(document.querySelector("PateryButton")) {
-                          document.querySelectorAll("PateryButton").forEach(P => {
-                            P.style.backgroundColor = "var(--white)";
-                            P.style.color = "var(--gray-light)";
-                            P.style.boxShadow = "none";
-                          })
-                          document.querySelectorAll(".ri-67").forEach(P => {
-                            P.style.backgroundColor = "var(--gray-light)";
-                          })
-                        }
-                        e.style.backgroundColor = "#fff";
-                        e.style.color = "#000";
-                      });
-                    }
+                      e.style.backgroundColor = "var(--gray)";
+                      e.style.color = "#fff";
+                    });
+                  } if (L.matches) {
+                    document.querySelectorAll("*").forEach(function (e) {
+                      if(document.querySelector("PateryButton")) {
+                        document.querySelectorAll("PateryButton").forEach(P => {
+                          P.style.backgroundColor = "var(--white)";
+                          P.style.color = "var(--gray-light)";
+                          P.style.boxShadow = "none";
+                        })
+                        document.querySelectorAll(".ri-67").forEach(P => {
+                          P.style.backgroundColor = "var(--gray-light)";
+                        })
+                      }
+                      e.style.backgroundColor = "#fff";
+                      e.style.color = "#000";
+                    });
                   }
                 })()
               )))));
