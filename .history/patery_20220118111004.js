@@ -8,7 +8,7 @@
  * @return {string}
  * @description
  */
- (async () => {
+(async () => {
   const debug = false; // true;
 })();
 (async () => {
@@ -152,13 +152,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.7/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -211,7 +211,8 @@ eval(eval(eval(eval(eval(eval(
                             P.style.color = "#fff";
                           })
                         }
-                        if(e.tagName === "BODY") {
+                        // set dark mode for body
+                        if (e.tagName === "BODY") {
                           e.style.backgroundColor = "#1a1a1a";
                           e.style.color = "#fff";
                         }
@@ -228,10 +229,8 @@ eval(eval(eval(eval(eval(eval(
                             P.style.backgroundColor = "var(--gray-light)";
                           })
                         }
-                        if(e.tagName === "BODY") {
-                          e.style.backgroundColor = "#fff";
-                          e.style.color = "#000";
-                        }
+                        e.style.backgroundColor = "#fff";
+                        e.style.color = "#000";
                       });
                     }
                   }
@@ -245,14 +244,19 @@ eval(eval(eval(eval(eval(eval(
               document.querySelectorAll("PateryButton").forEach(function (e) {
                 const B = document.createElement("button");
                 const A = e.attributes;
-                
+                // first class name of button is PateryButton
+                B.className = e.className.toLowerCase();
+                // if PateryButton element has one more class then add it to button
+
                 for (let i = 0; i < A.length; i++) {
+                  if(A[i].name === "class") {
+                    B.className += " " + A[i].value;
+                  }
                   B.setAttribute(A[i].name, A[i].value);
                 }
                 while (e.firstChild) {
                   B.appendChild(e.firstChild);
                 }
-                B.classList.add(e.tagName.toLowerCase());
                 e.parentNode.replaceChild(B, e);
               });
           }

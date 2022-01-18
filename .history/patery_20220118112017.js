@@ -153,13 +153,6 @@ eval(eval(eval(eval(eval(eval(
           });
         })();
         (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
-          document.head.appendChild(css);
-        })();
-        (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
               eval(eval(eval(eval(eval(
@@ -245,14 +238,13 @@ eval(eval(eval(eval(eval(eval(
               document.querySelectorAll("PateryButton").forEach(function (e) {
                 const B = document.createElement("button");
                 const A = e.attributes;
-                
+                B.classList.add(e.tagName.toLowerCase());
                 for (let i = 0; i < A.length; i++) {
                   B.setAttribute(A[i].name, A[i].value);
                 }
                 while (e.firstChild) {
                   B.appendChild(e.firstChild);
                 }
-                B.classList.add(e.tagName.toLowerCase());
                 e.parentNode.replaceChild(B, e);
               });
           }

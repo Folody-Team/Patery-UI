@@ -153,13 +153,6 @@ eval(eval(eval(eval(eval(eval(
           });
         })();
         (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
-          document.head.appendChild(css);
-        })();
-        (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
               eval(eval(eval(eval(eval(
