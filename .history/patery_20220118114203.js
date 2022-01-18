@@ -23,8 +23,6 @@
 (async () => {
   const debug = false; // true;
 })();
-const _DARK = "dark";
-const _LIGHT = "light";
 eval(eval(eval(eval(eval(eval(
   (function(){
     (() => {
@@ -154,13 +152,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.9/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -179,8 +177,8 @@ eval(eval(eval(eval(eval(eval(
                   } while (ES.firstChild) {
                     M.appendChild(ES.firstChild);
                   } ES.parentNode.replaceChild(M, ES);
-                  const D = window.matchMedia(`(prefers-color-scheme: dark)`),
-                      L = window.matchMedia(`(prefers-color-scheme: light)`);
+                  const D = window.matchMedia("(prefers-color-scheme: dark)"),
+                      L = window.matchMedia("(prefers-color-scheme: light)");
                   // get color theme from local storage or browser settings if not set yet
                   const theme = localStorage.getItem("theme");
                   if (theme === null) {
@@ -189,13 +187,13 @@ eval(eval(eval(eval(eval(eval(
                     } else if (L.matches) {
                       localStorage.setItem("theme", "light");
                     } else {
-                      localStorage.setItem("theme", "light");
+                      localStorage.setItem("theme", "dark");
                     }
                   }
                   // if is not dark or light mode then pick color from browser settings
                   if(!D.matches && !L.matches) {
                     if(window.matchMedia("(prefers-color-scheme: no-preference)").matches) {
-                      if(window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+                      if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
                         document.body.style.backgroundColor = "#1a1a1a";
                         document.body.style.color = "#fff";
                       } else {
@@ -207,6 +205,11 @@ eval(eval(eval(eval(eval(eval(
                     // set dark mode and light mode for all elements
                     if (D.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            P.classList.add("dark");
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#1a1a1a";
                           e.style.color = "#fff";
@@ -214,6 +217,14 @@ eval(eval(eval(eval(eval(eval(
                       });
                     } if (L.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            P.classList[0] = "light";
+                          })
+                          document.querySelectorAll(".ri-67").forEach(P => {
+                            P.style.backgroundColor = "var(--gray-light)";
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#fff";
                           e.style.color = "#000";
@@ -233,16 +244,12 @@ eval(eval(eval(eval(eval(eval(
                 const A = e.attributes;
                 
                 for (let i = 0; i < A.length; i++) {
-                  //
                   B.setAttribute(A[i].name, A[i].value);
                 }
                 while (e.firstChild) {
                   B.appendChild(e.firstChild);
                 }
-                const PClass = e.tagName.toLowerCase();
-                const BClass = e.getAttribute("class");
-                const complete = PClass + " " + BClass;
-                B.setAttribute("class", complete);
+                B.classList.add(e.tagName.toLowerCase());
                 e.parentNode.replaceChild(B, e);
               });
           }
@@ -270,23 +277,6 @@ eval(eval(eval(eval(eval(eval(
           });
           
         })();
-        eval(eval(eval(eval(eval(
-            (() => {
-              if(document.querySelector("PateryButton")) {
-                document.querySelectorAll("PateryButton").forEach(function (e) {
-                  const CLASS = e.classList;
-                  let CLASS_LIST = []
-                  for (let i = 0; i < CLASS.length; i++) {
-                    // push light and dark classes to array
-                    if(CLASS[i] === "light" || CLASS[i] === "dark") {
-                      CLASS_LIST.push(CLASS[i]);
-                    }
-                  }
-                  console.log(CLASS_LIST);
-                });
-              }
-            })()
-        )))));
       }
     })();
     

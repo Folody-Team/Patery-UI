@@ -154,13 +154,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.9/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -179,23 +179,23 @@ eval(eval(eval(eval(eval(eval(
                   } while (ES.firstChild) {
                     M.appendChild(ES.firstChild);
                   } ES.parentNode.replaceChild(M, ES);
-                  const D = window.matchMedia(`(prefers-color-scheme: dark)`),
-                      L = window.matchMedia(`(prefers-color-scheme: light)`);
+                  const D = window.matchMedia(`(prefers-color-scheme: ${_DARK})`),
+                      L = window.matchMedia(`(prefers-color-scheme: ${_LIGHT})`);
                   // get color theme from local storage or browser settings if not set yet
                   const theme = localStorage.getItem("theme");
                   if (theme === null) {
                     if (D.matches) {
-                      localStorage.setItem("theme", "dark");
+                      localStorage.setItem("theme", _DARK);
                     } else if (L.matches) {
-                      localStorage.setItem("theme", "light");
+                      localStorage.setItem("theme", _LIGHT);
                     } else {
-                      localStorage.setItem("theme", "light");
+                      localStorage.setItem("theme", _DARK);
                     }
                   }
                   // if is not dark or light mode then pick color from browser settings
                   if(!D.matches && !L.matches) {
                     if(window.matchMedia("(prefers-color-scheme: no-preference)").matches) {
-                      if(window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+                      if(window.matchMedia(`(prefers-color-scheme: ${_DARK})`).matches) {
                         document.body.style.backgroundColor = "#1a1a1a";
                         document.body.style.color = "#fff";
                       } else {
@@ -207,6 +207,19 @@ eval(eval(eval(eval(eval(eval(
                     // set dark mode and light mode for all elements
                     if (D.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            new Promise(function (resolve, reject) {
+                              const CLASS = P.getAttribute("class");
+                              const complete = _DARK + " " + CLASS;
+                              P.setAttribute("class", complete);
+                            }).then(function () {
+                              // reload page to apply changes
+                              window.location.reload();
+                            });
+
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#1a1a1a";
                           e.style.color = "#fff";
@@ -214,6 +227,21 @@ eval(eval(eval(eval(eval(eval(
                       });
                     } if (L.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            new Promise(function (resolve, reject) {
+                              const CLASS = P.getAttribute("class");
+                              const complete = _LIGHT + " " + CLASS;
+                              P.setAttribute("class", complete);
+                            }).then(function () {
+                              // reload window to apply changes
+                              window.location.reload();
+                            });
+                          })
+                          document.querySelectorAll(".ri-67").forEach(P => {
+                            P.style.backgroundColor = "var(--gray-light)";
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#fff";
                           e.style.color = "#000";
@@ -233,7 +261,6 @@ eval(eval(eval(eval(eval(eval(
                 const A = e.attributes;
                 
                 for (let i = 0; i < A.length; i++) {
-                  //
                   B.setAttribute(A[i].name, A[i].value);
                 }
                 while (e.firstChild) {
@@ -270,23 +297,6 @@ eval(eval(eval(eval(eval(eval(
           });
           
         })();
-        eval(eval(eval(eval(eval(
-            (() => {
-              if(document.querySelector("PateryButton")) {
-                document.querySelectorAll("PateryButton").forEach(function (e) {
-                  const CLASS = e.classList;
-                  let CLASS_LIST = []
-                  for (let i = 0; i < CLASS.length; i++) {
-                    // push light and dark classes to array
-                    if(CLASS[i] === "light" || CLASS[i] === "dark") {
-                      CLASS_LIST.push(CLASS[i]);
-                    }
-                  }
-                  console.log(CLASS_LIST);
-                });
-              }
-            })()
-        )))));
       }
     })();
     

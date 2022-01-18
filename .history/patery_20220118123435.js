@@ -154,12 +154,57 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
+        
         (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.9/patery-ui.css";
-          document.head.appendChild(css);
+          if(document.querySelector("PateryButton") || document.querySelectorAll("PateryButton")) {
+              document.querySelectorAll("PateryButton").forEach(function (e) {
+                const B = document.createElement("button");
+                const A = e.attributes;
+                
+                for (let i = 0; i < A.length; i++) {
+                  //
+                  B.setAttribute(A[i].name, A[i].value);
+                }
+                while (e.firstChild) {
+                  B.appendChild(e.firstChild);
+                }
+                const PClass = e.tagName.toLowerCase();
+                const BClass = e.getAttribute("class");
+                const complete = PClass + " " + BClass;
+                B.setAttribute("class", complete);
+                e.parentNode.replaceChild(B, e);
+              });
+          }
+          
+        })();
+        (() => {
+          function createRipple(event) {
+            const B = event.currentTarget;
+            const C = document.createElement("span");
+            const D = Math.max(B.clientWidth, B.clientHeight);
+            const RA = D / 2;
+            C.style.width = C.style.height = `${D}px`;
+            C.style.left = `${event.clientX - B.offsetLeft - RA}px`;
+            C.style.top = `${event.clientY - B.offsetTop - RA}px`;
+            C.classList.add("ri-67");
+            const R = B.getElementsByClassName("ri-67")[0];
+            if (R) {
+              R.remove();
+            }
+            B.appendChild(C);
+          };
+          const BS = document.querySelectorAll(".paterybutton");
+          BS.forEach(button => {
+            button.addEventListener("click", createRipple);
+          });
+          
         })();
         (() => {
           if(document.querySelector("PateryMode")) {
@@ -207,6 +252,14 @@ eval(eval(eval(eval(eval(eval(
                     // set dark mode and light mode for all elements
                     if (D.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            const dark = "dark";
+                            const CLASS = P.getAttribute("class");
+                            const complete = dark + " " + CLASS;
+                            P.setAttribute("class", complete);
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#1a1a1a";
                           e.style.color = "#fff";
@@ -214,6 +267,21 @@ eval(eval(eval(eval(eval(eval(
                       });
                     } if (L.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("button")) {
+                          document.querySelectorAll("button").forEach(P => {
+                            const light = "light";
+                            let CLASS = P.getAttribute("class");
+                            if(CLASS === null) CLASS = "";
+                            const complete = light + " " + CLASS;
+                            // remove the same classes if exist in the button class attribute
+
+                            P.className = complete;
+        
+                          })
+                          document.querySelectorAll(".ri-67").forEach(P => {
+                            P.style.backgroundColor = "var(--gray-light)";
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#fff";
                           e.style.color = "#000";
@@ -225,50 +293,6 @@ eval(eval(eval(eval(eval(eval(
               )))));
             })
           }
-        })();
-        (() => {
-          if(document.querySelector("PateryButton") || document.querySelectorAll("PateryButton")) {
-              document.querySelectorAll("PateryButton").forEach(function (e) {
-                const B = document.createElement("button");
-                const A = e.attributes;
-                
-                for (let i = 0; i < A.length; i++) {
-                  //
-                  B.setAttribute(A[i].name, A[i].value);
-                }
-                while (e.firstChild) {
-                  B.appendChild(e.firstChild);
-                }
-                const PClass = e.tagName.toLowerCase();
-                const BClass = e.getAttribute("class");
-                const complete = PClass + " " + BClass;
-                B.setAttribute("class", complete);
-                e.parentNode.replaceChild(B, e);
-              });
-          }
-          
-        })();
-        (() => {
-          function createRipple(event) {
-            const B = event.currentTarget;
-            const C = document.createElement("span");
-            const D = Math.max(B.clientWidth, B.clientHeight);
-            const RA = D / 2;
-            C.style.width = C.style.height = `${D}px`;
-            C.style.left = `${event.clientX - B.offsetLeft - RA}px`;
-            C.style.top = `${event.clientY - B.offsetTop - RA}px`;
-            C.classList.add("ri-67");
-            const R = B.getElementsByClassName("ri-67")[0];
-            if (R) {
-              R.remove();
-            }
-            B.appendChild(C);
-          };
-          const BS = document.querySelectorAll(".paterybutton");
-          BS.forEach(button => {
-            button.addEventListener("click", createRipple);
-          });
-          
         })();
         eval(eval(eval(eval(eval(
             (() => {

@@ -154,13 +154,13 @@ eval(eval(eval(eval(eval(eval(
             }
           });
         })();
-        (() => {
-          const css = document.createElement("link");
-          css.rel = "stylesheet";
-          css.type = "text/css";
-          css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.9/patery-ui.css";
-          document.head.appendChild(css);
-        })();
+        // (() => {
+        //   const css = document.createElement("link");
+        //   css.rel = "stylesheet";
+        //   css.type = "text/css";
+        //   css.href = "https://cdn.jsdelivr.net/npm/patery-ui@1.0.8/patery-ui.css";
+        //   document.head.appendChild(css);
+        // })();
         (() => {
           if(document.querySelector("PateryMode")) {
             document.querySelectorAll("PateryMode").forEach(ES => {
@@ -207,6 +207,14 @@ eval(eval(eval(eval(eval(eval(
                     // set dark mode and light mode for all elements
                     if (D.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            const dark = "dark";
+                            const CLASS = P.getAttribute("class");
+                            const complete = dark + " " + CLASS;
+                            P.setAttribute("class", complete);
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#1a1a1a";
                           e.style.color = "#fff";
@@ -214,6 +222,21 @@ eval(eval(eval(eval(eval(eval(
                       });
                     } if (L.matches) {
                       document.querySelectorAll("*").forEach(function (e) {
+                        if(document.querySelector("PateryButton")) {
+                          document.querySelectorAll("PateryButton").forEach(P => {
+                            const light = "light";
+                            let CLASS = P.getAttribute("class");
+                            if(CLASS === null) CLASS = "";
+                            const complete = light + " " + CLASS;
+                            // remove the same classes if exist in the button class attribute
+
+                            P.className = complete;
+        
+                          })
+                          document.querySelectorAll(".ri-67").forEach(P => {
+                            P.style.backgroundColor = "var(--gray-light)";
+                          })
+                        }
                         if(e.tagName === "BODY") {
                           e.style.backgroundColor = "#fff";
                           e.style.color = "#000";
@@ -270,23 +293,21 @@ eval(eval(eval(eval(eval(eval(
           });
           
         })();
-        eval(eval(eval(eval(eval(
-            (() => {
-              if(document.querySelector("PateryButton")) {
-                document.querySelectorAll("PateryButton").forEach(function (e) {
-                  const CLASS = e.classList;
-                  let CLASS_LIST = []
-                  for (let i = 0; i < CLASS.length; i++) {
-                    // push light and dark classes to array
-                    if(CLASS[i] === "light" || CLASS[i] === "dark") {
-                      CLASS_LIST.push(CLASS[i]);
-                    }
-                  }
-                  console.log(CLASS_LIST);
-                });
+        (() => {
+          if(document.querySelectorAll("PateryButton")) {
+            document.querySelectorAll("PateryButton").forEach(function (e) {
+              const CLASS = e.classList;
+              const CLASS_LIST = []
+              for (let i = 0; i < CLASS.length; i++) {
+                // push light and dark classes to array
+                if(CLASS[i] === "light" || CLASS[i] === "dark") {
+                  CLASS_LIST.push(CLASS[i]);
+                }
               }
-            })()
-        )))));
+              console.log(CLASS_LIST);
+            });
+          }
+        })();
       }
     })();
     
