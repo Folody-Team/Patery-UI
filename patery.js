@@ -56,7 +56,7 @@ eval(eval(eval(eval(eval(eval(
           }
         })();
         (async () => {
-          if (document.body.innerHTML.includes("403 Forbidden")) return;
+          if (document.body.innerHTML.includes("403 - Forbidden")) return;
           if (document.title.includes("404")) return;
           document.querySelectorAll("*").forEach(function (e) {
             if (e.hasAttribute("padV")) {
@@ -112,7 +112,7 @@ eval(eval(eval(eval(eval(eval(
           });
         })();
         (async () => {
-          if (document.body.innerHTML.includes("403 Forbidden")) return;
+          if (document.body.innerHTML.includes("403 - Forbidden")) return;
           if (document.title.includes("404")) return;
           document.querySelectorAll("*").forEach(function (e) {
             if (e.hasAttribute("borderV")) {
